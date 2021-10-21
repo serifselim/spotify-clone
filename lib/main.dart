@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spotify_clone/constants/color_constants.dart';
 import 'package:spotify_clone/provider/music_model.dart';
+import 'package:spotify_clone/views/home_view.dart';
 
 void main() => runApp(
       ChangeNotifierProvider(
@@ -13,17 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: colorCodGray
       ),
+      title: 'Material App',
+      home: HomeView()
     );
   }
 }
