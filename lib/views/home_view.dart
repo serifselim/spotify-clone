@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/components/home/music_list_item_widget.dart';
 import 'package:spotify_clone/components/home/music_list_widget.dart';
 import 'package:spotify_clone/components/navigation/navigation_bar.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
+import 'package:spotify_clone/constants/text_styles_constants.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -26,13 +27,13 @@ class _HomeViewState extends State<HomeView> {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    const Text(
+                    Text(
                       'Good Evening',
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w600),
+                      style: sectionTitleTextStyle,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 16.0,
                     ),
                     MusicListWidget()
@@ -42,10 +43,8 @@ class _HomeViewState extends State<HomeView> {
             ],
           ),
         ),
-        bottomNavigationBar: const NavigationBar(),
+        bottomNavigationBar: NavigationBar(),
       ),
     );
   }
 }
-
-

@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
+import 'package:spotify_clone/constants/text_styles_constants.dart';
+import 'package:spotify_clone/constants/widgets_style_constants.dart';
 
 class MusicListItemWidget extends StatelessWidget {
   const MusicListItemWidget({
@@ -9,29 +13,30 @@ class MusicListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          color: colorMineShaft,
-          borderRadius:
-              BorderRadius.all(Radius.circular(4.0))),
+      decoration: musicItemDecoration,
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(4.0),
-                bottomLeft: Radius.circular(4.0)),
-            child: Image.asset('assets/images/chon.png'),
-          ),
-          const SizedBox(
+          itemImage(),
+          SizedBox(
             width: 8.0,
           ),
-          const Text(
-            'Chon',
-            style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w500),
-          )
+          itemText()
         ],
       ),
+    );
+  }
+
+  Text itemText() {
+    return const Text('Chon', style: detailTextStyle);
+  }
+
+  ClipRRect itemImage() {
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(4.0),
+        bottomLeft: Radius.circular(4.0),
+      ),
+      child: Image.asset('assets/images/chon.png'),
     );
   }
 }
