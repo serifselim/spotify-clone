@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: colorCodGray
+        scaffoldBackgroundColor: colorCodGray,
       ),
       title: 'Material App',
       home: HomeView()

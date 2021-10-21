@@ -10,7 +10,7 @@ class NavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       fixedColor: Colors.white,
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home', backgroundColor: Colors.white),
+        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         BottomNavigationBarItem(icon: Icon(Icons.library_music_outlined), label: 'Your Library'),
       ],
