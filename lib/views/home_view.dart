@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/components/home/music_list.dart';
 import 'package:spotify_clone/components/home/rectently_list.dart';
-import 'package:spotify_clone/components/home/rectently_list_item.dart';
 import 'package:spotify_clone/components/navigation/navigation_bar.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 
@@ -21,8 +20,7 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-          padding: EdgeInsets.only(top: 30.0),
-          child: Column(
+          child: ListView(
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,11 +28,37 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   sectionTitle('Good Evening'),
                   MusicList(),
-                  SizedBox(
-                    height: 30.0,
-                  ),
                   sectionTitle('Recently Played'),
-                  RectentlyList()
+                  RectentlyList(),
+                  sectionTitle('New Releases For You'),
+                  Container(
+                    height: 220.0,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        SizedBox(
+                          width: 30.0,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 15.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                child: Image.asset(
+                                    'assets/images/tycho.png'),
+                              ),
+                              Text(
+                                'Dance Gavin Dance',
+                              ),
+                              Text('Album • Afterburner')
+                            ],
+                          ),
+                        ),
+                        
+                      ],
+                    ),
+                  )
                 ],
               )
             ],
@@ -47,7 +71,7 @@ class _HomeViewState extends State<HomeView> {
 
   Container sectionTitle(String text) {
     return Container(
-      margin: EdgeInsets.only(left: 30.0 ,bottom: 16.0),
+      margin: EdgeInsets.only(left: 30.0, bottom: 16.0, top: 30.0),
       child: Text(
         text,
         style: sectionTitleTextStyle,

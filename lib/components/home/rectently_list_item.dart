@@ -12,7 +12,7 @@ class RectentlyListItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 15.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(circular)),
