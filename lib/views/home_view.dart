@@ -21,7 +21,7 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-          padding: EdgeInsets.only(top: 30.0 , left: 30.0 , bottom: 30.0),
+          padding: EdgeInsets.only(top: 30.0),
           child: Column(
             children: [
               Column(
@@ -47,7 +47,7 @@ class _HomeViewState extends State<HomeView> {
 
   Container sectionTitle(String text) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16.0),
+      margin: EdgeInsets.only(left: 30.0 ,bottom: 16.0),
       child: Text(
         text,
         style: sectionTitleTextStyle,

@@ -9,12 +9,17 @@ class RectentlyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 140.0,
+      height: 160.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
         // ignore: prefer_const_literals_to_create_immutables
-        children: <Widget> [
-          RectentlyListItem(circular: 50.0,),
+        children: <Widget>[
+          SizedBox(
+            width: 30.0,
+          ),
+          RectentlyListItem(
+            circular: 100.0,
+          ),
           RectentlyListItem(),
           RectentlyListItem(),
           RectentlyListItem(),

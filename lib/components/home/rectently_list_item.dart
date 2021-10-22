@@ -17,12 +17,12 @@ class RectentlyListItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(circular)),
             child: SizedBox(
-              height: 100,
+              height: 115,
               child: Image.asset('assets/images/mgk.png'),
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 8.0),
+            margin: const EdgeInsets.only(top: 10.0),
             width: 100.0,
             child: const Text(
               'Tickets to my downfall',

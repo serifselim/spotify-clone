@@ -9,7 +9,7 @@ class MusicList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 30.0),
+      margin: const EdgeInsets.symmetric(horizontal: 30.0),
       child: SizedBox(
         height: 230.0,
         child: GridView.count(
