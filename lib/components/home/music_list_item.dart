@@ -1,12 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:spotify_clone/constants/color_constants.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 import 'package:spotify_clone/constants/widgets_style_constants.dart';
 
-class MusicListItemWidget extends StatelessWidget {
-  const MusicListItemWidget({
+class MusicListItem extends StatelessWidget {
+  const MusicListItem({
     Key? key,
   }) : super(key: key);
 
