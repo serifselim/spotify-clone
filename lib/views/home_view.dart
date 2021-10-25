@@ -34,13 +34,12 @@ class _HomeViewState extends State<HomeView> {
                       sectionTitle('Good Evening'),
                       MusicList(songList: data.songList),
                       sectionTitle('Recently Played'),
-                      RectentlyList(),
+                      RectentlyList(songList: data.songList),
                       sectionTitle('New Releases For You'),
-                      YourList(),
-                      sectionTitle('New Releases For You'),
-                      YourList(),
-                      sectionTitle('New Releases For You'),
-                      YourList()
+                      YourList(songList: data.songList),
+                      sectionTitle('<Section Title>'),
+                      YourList(songList: data.songList),
+
                     ],
                   )
                 ],

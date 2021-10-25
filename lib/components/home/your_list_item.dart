@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 
 class YourListItem extends StatelessWidget {
-  const YourListItem({
-    Key? key,
-  }) : super(key: key);
+  final String text;
+  final String img;
+
+  YourListItem({required this.text, required this.img});
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +15,16 @@ class YourListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            child: Image.asset('assets/images/tycho.png'),
+            child: Image.asset(img),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10.0),
-            child: Column(
-              children: [
-                Text(
-                  'Dance Gavin Dance',
-                  style: detailTextStyle,
-                ),
-                Text('Album • Afterburner')
-              ],
-            ),
+          SizedBox(
+            height: 10.0,
           ),
+          Text(
+            text,
+            style: detailTextStyle,
+          ),
+          Text('Album • $text'),
         ],
       ),
     );
