@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:spotify_clone/components/home/music_list.dart';
 import 'package:spotify_clone/components/home/rectently_list.dart';
 import 'package:spotify_clone/components/home/your_list.dart';
 import 'package:spotify_clone/components/navigation/navigation_bar.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
+import 'package:spotify_clone/provider/music_model.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -17,33 +19,37 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          child: ListView(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // ignore: prefer_const_literals_to_create_immutables
+    return Consumer<MusicModel>(
+      builder: (context, data, child) {
+        return SafeArea(
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: Container(
+              child: ListView(
                 children: [
-                  sectionTitle('Good Evening'),
-                  MusicList(),
-                  sectionTitle('Recently Played'),
-                  RectentlyList(),
-                  sectionTitle('New Releases For You'),
-                  YourList(),
-                  sectionTitle('New Releases For You'),
-                  YourList(),
-                  sectionTitle('New Releases For You'),
-                  YourList()
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      sectionTitle('Good Evening'),
+                      MusicList(songList: data.songList),
+                      sectionTitle('Recently Played'),
+                      RectentlyList(),
+                      sectionTitle('New Releases For You'),
+                      YourList(),
+                      sectionTitle('New Releases For You'),
+                      YourList(),
+                      sectionTitle('New Releases For You'),
+                      YourList()
+                    ],
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
+            bottomNavigationBar: NavigationBar(),
           ),
-        ),
-        bottomNavigationBar: NavigationBar(),
-      ),
+        );
+      },
     );
   }
 
@@ -57,4 +63,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-

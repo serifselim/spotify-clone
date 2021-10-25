@@ -1,13 +1,14 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 import 'package:spotify_clone/constants/widgets_style_constants.dart';
 
 class MusicListItem extends StatelessWidget {
-  const MusicListItem({
-    Key? key,
-  }) : super(key: key);
+  final String img;
+  final String text;
+
+  MusicListItem({required this.img, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,11 @@ class MusicListItem extends StatelessWidget {
     );
   }
 
-  Text itemText() {
-    return const Text('Chon', style: detailTextStyle);
+  SizedBox itemText() {
+    return SizedBox(
+      width: 110.0,
+      child: Text(text, style: detailTextStyle),
+    );
   }
 
   ClipRRect itemImage() {
@@ -35,7 +39,7 @@ class MusicListItem extends StatelessWidget {
         topLeft: Radius.circular(4.0),
         bottomLeft: Radius.circular(4.0),
       ),
-      child: Image.asset('assets/images/chon.png'),
+      child: Image.asset(img),
     );
   }
 }
