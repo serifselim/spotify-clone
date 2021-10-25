@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/components/home/music_list.dart';
 import 'package:spotify_clone/components/home/rectently_list.dart';
+import 'package:spotify_clone/components/home/your_list.dart';
 import 'package:spotify_clone/components/navigation/navigation_bar.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 
@@ -31,34 +32,11 @@ class _HomeViewState extends State<HomeView> {
                   sectionTitle('Recently Played'),
                   RectentlyList(),
                   sectionTitle('New Releases For You'),
-                  Container(
-                    height: 220.0,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        SizedBox(
-                          width: 30.0,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(right: 15.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                child: Image.asset(
-                                    'assets/images/tycho.png'),
-                              ),
-                              Text(
-                                'Dance Gavin Dance',
-                              ),
-                              Text('Album • Afterburner')
-                            ],
-                          ),
-                        ),
-                        
-                      ],
-                    ),
-                  )
+                  YourList(),
+                  sectionTitle('New Releases For You'),
+                  YourList(),
+                  sectionTitle('New Releases For You'),
+                  YourList()
                 ],
               )
             ],
@@ -79,3 +57,4 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
