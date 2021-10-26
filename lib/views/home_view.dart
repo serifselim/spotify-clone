@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,11 +18,10 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
   @override
   Widget build(BuildContext context) {
     return Consumer<MusicModel>(
-      builder: (context, data, child) {
+      builder: (context, musicData, child) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           body: Container(
@@ -32,39 +29,45 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     sectionTitle('Good Evening'),
-                    MusicList(musicList: data.musicList),
+                    MusicList(musicList: musicData.musicList),
                     sectionTitle('Recently Played'),
-                    RectentlyList(songList: data.musicList),
+                    RectentlyList(songList: musicData.musicList),
                     sectionTitle('New Releases For You'),
-                    YourList(songList: data.musicList),
+                    YourList(songList: musicData.musicList),
                     sectionTitle('<Section Title>'),
-                    YourList(songList: data.musicList),
+                    YourList(songList: musicData.musicList),
                   ],
                 )
               ],
             ),
           ),
-          bottomNavigationBar: SizedBox(
-            height: 120.0,
-            child: Column(
-              children: [
-                CurrentSong(
-                  playerState: data.audioStatus,
-                  soundPageCallback: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => PlayView()));
-                  },
-                  playPauseButtonCallback: ()  {
-                    data.audioStatus == PlayerState.PLAYING ? data.pause() : data.resume();
-                    print(data.audioStatus);
-                  },
-                ),
-                NavigationBar()
-              ],
-            ),
-          ),
+          bottomNavigationBar: musicData.currentMusic != null
+              ? SizedBox(
+                  height: 120.0,
+                  child: Column(
+                    children: [
+                      CurrentSong(
+                        currentMusic: musicData.currentMusic,
+                        playerState: musicData.audioStatus,
+                        soundPageCallback: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PlayView()));
+                        },
+                        playPauseButtonCallback: () {
+                          musicData.audioStatus == PlayerState.PLAYING
+                              ? musicData.pause()
+                              : musicData.resume();
+                        },
+                      ),
+                      const NavigationBar()
+                    ],
+                  ),
+                )
+              : const NavigationBar(),
         );
       },
     );
@@ -72,7 +75,7 @@ class _HomeViewState extends State<HomeView> {
 
   Container sectionTitle(String text) {
     return Container(
-      margin: EdgeInsets.only(left: 30.0, bottom: 16.0, top: 30.0),
+      margin: const EdgeInsets.only(left: 30.0, bottom: 16.0, top: 30.0),
       child: Text(
         text,
         style: sectionTitleTextStyle,
@@ -80,5 +83,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-
-

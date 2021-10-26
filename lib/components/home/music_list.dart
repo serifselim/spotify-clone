@@ -27,7 +27,9 @@ class MusicList extends StatelessWidget {
               img: musicData.musicImg,
               text: musicData.musicText,
               onTap: (){
-                Provider.of<MusicModel>(context, listen: false).play(musicData.musicURL);
+                Provider.of<MusicModel>(context, listen: false).play(
+                  musicData: musicData
+                );
               },
             );
           },

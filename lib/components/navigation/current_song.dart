@@ -1,17 +1,20 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
+import 'package:spotify_clone/provider/music.dart';
 
 class CurrentSong extends StatelessWidget {
   final VoidCallback soundPageCallback;
   final VoidCallback playPauseButtonCallback;
   final PlayerState playerState;
+  final Music currentMusic;
 
   const CurrentSong(
       {Key? key,
       required this.soundPageCallback,
       required this.playPauseButtonCallback,
-      required this.playerState})
+      required this.playerState,
+      required this.currentMusic})
       : super(key: key);
 
   @override
@@ -64,7 +67,7 @@ class CurrentSong extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Japanese - Lo-Fi'),
+        Text(currentMusic.musicText),
         Row(
           children: [
             Icon(Icons.devices_other),
@@ -82,7 +85,7 @@ class CurrentSong extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(right: 10.0),
       width: 63.0,
-      child: Image.asset('assets/images/japanese.jpg'),
+      child: Image.asset(currentMusic.musicImg),
     );
   }
 }

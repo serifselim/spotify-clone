@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 
 class MusicDetails extends StatelessWidget {
-  const MusicDetails({
-    Key? key,
-  }) : super(key: key);
+  final String musicText;
+
+  const MusicDetails({Key? key, required this.musicText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class MusicDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Japanese Lofi',
+              musicText,
               style: sectionTitleTextStyle,
             ),
             SizedBox(
               height: 5.0,
             ),
-            Text('Iration',
+            Text('Detail Text Example',
             style: detailTextStyle,)
           ],
         ),

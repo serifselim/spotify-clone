@@ -37,30 +37,36 @@ class MusicModel extends ChangeNotifier {
   ];
 
   AudioPlayer audioPlayer = AudioPlayer();
-  PlayerState audioStatus = PlayerState.PAUSED;
+  PlayerState audioStatus = PlayerState.PLAYING;
+  var historyMusic;
+  var currentMusic;
 
-  void play(String currentUrl) async {
-    int result = await audioPlayer.play(currentUrl);
+  void play({required Music musicData}) async {
+    int result = await audioPlayer.play(musicData.musicURL);
     if (result == 1) {
       setAudioStatus();
+      currentMusic = musicData;
     }
     notifyListeners();
   }
 
   void stop() async {
     int result = await audioPlayer.stop();
+    
     if (result == 1) {
       setAudioStatus();
     }
+
     notifyListeners();
   }
 
   void pause() async {
     int result = await audioPlayer.pause();
-    print(result);
+
     if (result == 1) {
       setAudioStatus();
     }
+
     notifyListeners();
   }
 
@@ -70,6 +76,7 @@ class MusicModel extends ChangeNotifier {
     if (result == 1) {
       setAudioStatus();
     }
+
     notifyListeners();
   }
 
