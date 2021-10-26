@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:spotify_clone/components/home/music_list.dart';
 import 'package:spotify_clone/components/home/rectently_list.dart';
 import 'package:spotify_clone/components/home/your_list.dart';
+import 'package:spotify_clone/components/navigation/current_song.dart';
 import 'package:spotify_clone/components/navigation/navigation_bar.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 import 'package:spotify_clone/provider/music_model.dart';
@@ -39,13 +40,27 @@ class _HomeViewState extends State<HomeView> {
                       YourList(songList: data.songList),
                       sectionTitle('<Section Title>'),
                       YourList(songList: data.songList),
-
                     ],
                   )
                 ],
               ),
             ),
-            bottomNavigationBar: NavigationBar(),
+            bottomNavigationBar: Container(
+              height: 120.0,
+              child: Column(
+                children: [
+                  CurrentSong(
+                    soundPageCallback: (){
+                      print('sound page');
+                    },
+                    playButtonCallback: (){
+                      print('play button');
+                    },
+                  ),
+                  NavigationBar()
+                ],
+              ),
+            ),
           ),
         );
       },
@@ -62,3 +77,5 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
+

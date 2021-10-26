@@ -12,7 +12,7 @@ class NavigationBar extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        BottomNavigationBarItem(icon: Icon(Icons.library_music_outlined), label: 'Your Library'),
+        BottomNavigationBarItem(icon: Icon(Icons.library_music_rounded), label: 'Your Library'),
       ],
     );
   }
