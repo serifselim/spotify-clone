@@ -51,7 +51,7 @@ class CurrentSong extends StatelessWidget {
     return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Prisioner - Dance Gavin Dance'),
+                    Text('Japanese - Lo-Fi'),
                     Row(
                       children: [
                         Icon(Icons.devices_other),
@@ -69,7 +69,7 @@ class CurrentSong extends StatelessWidget {
     return Container(
             margin: EdgeInsets.only(right: 10.0),
             width: 63.0,
-            child: Image.asset('assets/images/mgk.png'),
+            child: Image.asset('assets/images/japanese.jpg'),
           );
   }
 }

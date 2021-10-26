@@ -15,6 +15,7 @@ class YourListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
+            height: 150.0,
             child: Image.asset(img),
           ),
           SizedBox(

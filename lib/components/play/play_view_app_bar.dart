@@ -10,21 +10,27 @@ class PlayViewAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(AntDesign.down),
+        leading: Container(
+          margin: EdgeInsets.only(left: 10.0),
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(AntDesign.down),
+          ),
         ),
         centerTitle: true,
         // ignore: prefer_const_literals_to_create_immutables
         actions: [
-          IconButton(
-              onPressed: null,
-              icon: Icon(
-                Entypo.dots_three_vertical,
-                color: Colors.white,
-              ))
+          Container(
+            margin: EdgeInsets.only(right: 10.0),
+            child: IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Entypo.dots_three_vertical,
+                  color: Colors.white,
+                )),
+          )
         ],
         // ignore: prefer_const_literals_to_create_immutables
         title: Column(children: [
