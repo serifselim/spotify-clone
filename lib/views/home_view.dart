@@ -9,6 +9,7 @@ import 'package:spotify_clone/components/navigation/current_song.dart';
 import 'package:spotify_clone/components/navigation/navigation_bar.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 import 'package:spotify_clone/provider/music_model.dart';
+import 'package:spotify_clone/views/play_view.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -22,44 +23,41 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Consumer<MusicModel>(
       builder: (context, data, child) {
-        return SafeArea(
-          child: Scaffold(
-            resizeToAvoidBottomInset: false,
-            body: Container(
-              child: ListView(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      sectionTitle('Good Evening'),
-                      MusicList(songList: data.songList),
-                      sectionTitle('Recently Played'),
-                      RectentlyList(songList: data.songList),
-                      sectionTitle('New Releases For You'),
-                      YourList(songList: data.songList),
-                      sectionTitle('<Section Title>'),
-                      YourList(songList: data.songList),
-                    ],
-                  )
-                ],
-              ),
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Container(
+            child: ListView(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    sectionTitle('Good Evening'),
+                    MusicList(songList: data.songList),
+                    sectionTitle('Recently Played'),
+                    RectentlyList(songList: data.songList),
+                    sectionTitle('New Releases For You'),
+                    YourList(songList: data.songList),
+                    sectionTitle('<Section Title>'),
+                    YourList(songList: data.songList),
+                  ],
+                )
+              ],
             ),
-            bottomNavigationBar: Container(
-              height: 120.0,
-              child: Column(
-                children: [
-                  CurrentSong(
-                    soundPageCallback: (){
-                      print('sound page');
-                    },
-                    playButtonCallback: (){
-                      print('play button');
-                    },
-                  ),
-                  NavigationBar()
-                ],
-              ),
+          ),
+          bottomNavigationBar: Container(
+            height: 120.0,
+            child: Column(
+              children: [
+                CurrentSong(
+                  soundPageCallback: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => PlayView()));
+                  },
+                  playButtonCallback: (){
+                  },
+                ),
+                NavigationBar()
+              ],
             ),
           ),
         );

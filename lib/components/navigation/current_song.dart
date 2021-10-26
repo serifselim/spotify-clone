@@ -10,9 +10,7 @@ class CurrentSong extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        print('sound page');
-      },
+      onTap: soundPageCallback,
       child: Container(
         color: colorMineShaft,
         child: Row(
@@ -40,9 +38,7 @@ class CurrentSong extends StatelessWidget {
                       print('favorite button');
                     },child: Icon(Icons.favorite_border),),
                     TextButton(
-                        onPressed: () {
-                          print('play button');
-                        },
+                        onPressed: playButtonCallback,
                         child: Icon(
                           Icons.play_arrow,
                           color: Colors.white,
