@@ -4,9 +4,9 @@ import 'package:spotify_clone/components/home/music_list_item.dart';
 import 'package:spotify_clone/provider/music_model.dart';
 
 class MusicList extends StatelessWidget {
-  List songList;
+  List musicList;
 
-  MusicList({Key? key, required this.songList}) : super(key: key);
+  MusicList({Key? key, required this.musicList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +20,15 @@ class MusicList extends StatelessWidget {
               mainAxisSpacing: 10,
               childAspectRatio: (1 / .33),
               crossAxisSpacing: 10),
-          itemCount: songList.length,
+          itemCount: musicList.length,
           itemBuilder: (context, index){
-            var songData = songList[index];
+            var musicData = musicList[index];
             return MusicListItem(
-              img: songData.songImg,
-              text: songData.songText,
+              img: musicData.musicImg,
+              text: musicData.musicText,
+              onTap: (){
+                Provider.of<MusicModel>(context, listen: false).play(musicData.musicURL);
+              },
             );
           },
         ),

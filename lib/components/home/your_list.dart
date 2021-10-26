@@ -17,8 +17,8 @@ class YourList extends StatelessWidget {
         itemBuilder: (context, index){
           var songData = songList[index];
           return YourListItem(
-            img: songData.songImg,
-            text: songData.songText
+            img: songData.musicImg,
+            text: songData.musicText
           );
         },
       ),

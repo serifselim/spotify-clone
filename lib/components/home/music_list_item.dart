@@ -7,21 +7,25 @@ import 'package:spotify_clone/constants/widgets_style_constants.dart';
 class MusicListItem extends StatelessWidget {
   final String img;
   final String text;
+  final VoidCallback onTap;
 
-  MusicListItem({required this.img, required this.text});
+  MusicListItem({required this.img, required this.text, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: musicItemDecoration,
-      child: Row(
-        children: [
-          itemImage(),
-          SizedBox(
-            width: 8.0,
-          ),
-          itemText()
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: musicItemDecoration,
+        child: Row(
+          children: [
+            itemImage(),
+            SizedBox(
+              width: 8.0,
+            ),
+            itemText()
+          ],
+        ),
       ),
     );
   }

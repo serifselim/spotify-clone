@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spotify_clone/components/home/music_list.dart';
@@ -19,6 +20,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
   @override
   Widget build(BuildContext context) {
     return Consumer<MusicModel>(
@@ -33,27 +35,30 @@ class _HomeViewState extends State<HomeView> {
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     sectionTitle('Good Evening'),
-                    MusicList(songList: data.songList),
+                    MusicList(musicList: data.musicList),
                     sectionTitle('Recently Played'),
-                    RectentlyList(songList: data.songList),
+                    RectentlyList(songList: data.musicList),
                     sectionTitle('New Releases For You'),
-                    YourList(songList: data.songList),
+                    YourList(songList: data.musicList),
                     sectionTitle('<Section Title>'),
-                    YourList(songList: data.songList),
+                    YourList(songList: data.musicList),
                   ],
                 )
               ],
             ),
           ),
-          bottomNavigationBar: Container(
+          bottomNavigationBar: SizedBox(
             height: 120.0,
             child: Column(
               children: [
                 CurrentSong(
+                  playerState: data.audioStatus,
                   soundPageCallback: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => PlayView()));
                   },
-                  playButtonCallback: (){
+                  playPauseButtonCallback: ()  {
+                    data.audioStatus == PlayerState.PLAYING ? data.pause() : data.resume();
+                    print(data.audioStatus);
                   },
                 ),
                 NavigationBar()

@@ -17,8 +17,8 @@ class RectentlyList extends StatelessWidget {
         itemBuilder: (context, index){
           var songData = songList[index];
           return RectentlyListItem(
-            img: songData.songImg,
-            text: songData.songText
+            img: songData.musicImg,
+            text: songData.musicText
           );
         },
       ),
