@@ -15,26 +15,29 @@ class MusicList extends StatelessWidget {
       child: SizedBox(
         height: 230.0,
         child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              childAspectRatio: (1 / .33),
-              crossAxisSpacing: 10),
+          gridDelegate: gridDelegate(),
           itemCount: musicList.length,
-          itemBuilder: (context, index){
+          itemBuilder: (context, index) {
             var musicData = musicList[index];
             return MusicListItem(
               img: musicData.musicImg,
               text: musicData.musicText,
-              onTap: (){
-                Provider.of<MusicModel>(context, listen: false).play(
-                  musicData: musicData
-                );
+              onTap: () {
+                Provider.of<MusicModel>(context, listen: false)
+                    .play(musicData: musicData);
               },
             );
           },
         ),
       ),
     );
+  }
+
+  SliverGridDelegateWithFixedCrossAxisCount gridDelegate() {
+    return const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        childAspectRatio: (1 / .33),
+        crossAxisSpacing: 10);
   }
 }

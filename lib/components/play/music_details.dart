@@ -14,18 +14,20 @@ class MusicDetails extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              musicText,
-              style: sectionTitleTextStyle,
+            Container(
+              margin: const EdgeInsets.only(bottom: 10.0),
+              child: Text(
+                musicText,
+                style: sectionTitleTextStyle,
+              ),
             ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Text('Detail Text Example',
-            style: detailTextStyle,)
+            const Text(
+              'Detail Text Example',
+              style: detailTextStyle,
+            )
           ],
         ),
-        IconButton(
+        const IconButton(
             iconSize: 30.0,
             onPressed: null,
             icon: Icon(

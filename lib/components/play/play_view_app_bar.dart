@@ -11,20 +11,20 @@ class PlayViewAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         leading: Container(
-          margin: EdgeInsets.only(left: 10.0),
+          margin: const EdgeInsets.only(left: 10.0),
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(AntDesign.down),
+            icon: const Icon(AntDesign.down),
           ),
         ),
         centerTitle: true,
         // ignore: prefer_const_literals_to_create_immutables
         actions: [
           Container(
-            margin: EdgeInsets.only(right: 10.0),
-            child: IconButton(
+            margin: const EdgeInsets.only(right: 10.0),
+            child: const IconButton(
                 onPressed: null,
                 icon: Icon(
                   Entypo.dots_three_vertical,
@@ -34,11 +34,11 @@ class PlayViewAppBar extends StatelessWidget with PreferredSizeWidget {
         ],
         // ignore: prefer_const_literals_to_create_immutables
         title: Column(children: [
-          Text(
+          const Text(
             'PLAYİNG FROM ALBUM',
             style: appBarLightTextStyle,
           ),
-          Text(
+          const Text(
             'Coastin',
             style: appBarBoldTextStyle,
           ),

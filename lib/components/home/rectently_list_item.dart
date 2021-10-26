@@ -16,12 +16,9 @@ class RectentlyListItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(circular)),
-            child: SizedBox(
-              height: 115,
-              child: Image.asset(img),
-            ),
+          SizedBox(
+            height: 115,
+            child: Image.asset(img),
           ),
           Container(
             margin: const EdgeInsets.only(top: 10.0),

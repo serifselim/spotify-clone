@@ -4,14 +4,14 @@ import 'package:spotify_clone/constants/color_constants.dart';
 import 'package:spotify_clone/provider/music.dart';
 
 class CurrentSong extends StatelessWidget {
-  final VoidCallback soundPageCallback;
+  final VoidCallback musicPagePushCallback;
   final VoidCallback playPauseButtonCallback;
   final PlayerState playerState;
   final Music currentMusic;
 
   const CurrentSong(
       {Key? key,
-      required this.soundPageCallback,
+      required this.musicPagePushCallback,
       required this.playPauseButtonCallback,
       required this.playerState,
       required this.currentMusic})
@@ -20,7 +20,7 @@ class CurrentSong extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: soundPageCallback,
+      onTap: musicPagePushCallback,
       child: Container(
         color: colorMineShaft,
         child: Row(
@@ -41,20 +41,15 @@ class CurrentSong extends StatelessWidget {
   Row currentSongActions() {
     return Row(
       children: [
-        GestureDetector(
-          onTap: () {
-            print('favorite button');
-          },
-          child: Icon(Icons.favorite_border),
-        ),
+        const Icon(Icons.favorite_border),
         TextButton(
           onPressed: playPauseButtonCallback,
           child: playerState == PlayerState.PLAYING
-              ? Icon(
+              ? const Icon(
                   Icons.pause,
                   color: Colors.white,
                 )
-              : Icon(
+              : const Icon(
                   Icons.play_arrow,
                   color: Colors.white,
                 ),
@@ -70,11 +65,11 @@ class CurrentSong extends StatelessWidget {
         Text(currentMusic.musicText),
         Row(
           children: [
-            Icon(Icons.devices_other),
-            SizedBox(
-              width: 5.0,
+            Container(
+              margin: const EdgeInsets.only(right: 5.0),
+              child: const Icon(Icons.devices_other),
             ),
-            Text('Devices Available')
+            const Text('Devices Available')
           ],
         )
       ],
@@ -83,7 +78,7 @@ class CurrentSong extends StatelessWidget {
 
   Container currentSongImg() {
     return Container(
-      margin: EdgeInsets.only(right: 10.0),
+      margin: const EdgeInsets.only(right: 10.0),
       width: 63.0,
       child: Image.asset(currentMusic.musicImg),
     );

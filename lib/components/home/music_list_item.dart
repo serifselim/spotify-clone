@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/constants/text_styles_constants.dart';
 import 'package:spotify_clone/constants/widgets_style_constants.dart';
@@ -9,7 +7,9 @@ class MusicListItem extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
 
-  MusicListItem({required this.img, required this.text, required this.onTap});
+  const MusicListItem(
+      {Key? key, required this.img, required this.text, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class MusicListItem extends StatelessWidget {
         child: Row(
           children: [
             itemImage(),
-            SizedBox(
+            const SizedBox(
               width: 8.0,
             ),
             itemText()

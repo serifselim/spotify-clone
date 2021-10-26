@@ -5,7 +5,7 @@ class YourListItem extends StatelessWidget {
   final String text;
   final String img;
 
-  YourListItem({required this.text, required this.img});
+  const YourListItem({Key? key, required this.text, required this.img}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,10 @@ class YourListItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          Container(
+            margin: const EdgeInsets.only(top: 10.0),
             height: 150.0,
             child: Image.asset(img),
-          ),
-          SizedBox(
-            height: 10.0,
           ),
           Text(
             text,

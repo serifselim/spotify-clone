@@ -11,13 +11,23 @@ import 'package:spotify_clone/provider/music_model.dart';
 import 'package:spotify_clone/views/play_view.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({Key? key}) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
+
+  void musicPagePushFunc() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MusicView(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<MusicModel>(
@@ -50,15 +60,10 @@ class _HomeViewState extends State<HomeView> {
                     children: [
                       CurrentSong(
                         currentMusic: musicData.currentMusic,
-                        playerState: musicData.audioStatus,
-                        soundPageCallback: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PlayView()));
-                        },
+                        playerState: musicData.audioState,
+                        musicPagePushCallback: musicPagePushFunc,
                         playPauseButtonCallback: () {
-                          musicData.audioStatus == PlayerState.PLAYING
+                          musicData.audioState == PlayerState.PLAYING
                               ? musicData.pause()
                               : musicData.resume();
                         },
